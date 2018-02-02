@@ -1,0 +1,41 @@
+◎◎◎◎◎◎◎◎◎Registry Analysis 學習筆記◎◎◎◎◎◎◎◎◎
+
+Windows 登錄編輯程式
+
+設定檔的命名法：Keys-SubKeys-Value-Type-Data
+
+核心系統的設定檔可於「C:\Windows\system32\config folder」路徑內找到
+	SYSTEM：電腦硬體及系統相關資訊
+	SECUTITY：安全參數設定
+	SOFTWARE：系統安裝軟體資訊
+	SAM：使用者屬性&密碼
+	NTUSER.DAT：記錄使用者帳戶設定
+				e.g.桌面排列、快速啟動排列、最近開啟檔案、開始功能表、瀏覽器設定
+				搜尋關鍵字「recentdoc」
+
+SYSTEM設定檔
+	印表機
+		「HKEY_LOCAL_MACHINE\SYSTEM\ControlSetoo1\Control\Print\Environments」路徑
+			「Windows x64」
+				「Drivers」
+		判斷此電腦是否曾連接過陌生的印表機而引發後續的列印行為
+	隨身碟
+		「HKEY_LOCAL_MACHINE\SYSTEM\ControlSetoo1\Enum\USBSTOR」
+		審視是否有陌生的隨身硬碟插入電腦裝置
+
+NTUSER.DAT設定檔
+	網頁
+		「NTUSER.DAT\SOFTWARE\Microsoft\Internet Explorer\TypedURLs」
+		使用者曾利用IE瀏覽器瀏覽的網路頁面
+		if有「雲端儲存空間」、「E-mail信箱」相關頁面資訊 then可能經網路夾帶檔案
+
+SAM設定檔
+	if登入紀錄無異狀 then檔案外洩可能由內部人員所為
+
+工具：
+FTK Imager：
+	映像檔製作：MD5 or SHA確認完整性
+	資料復原：有效程度取決於檔案時計刪除的時間
+	內容預覽
+Registry Viewer
+Regripper

@@ -1,0 +1,79 @@
+●●●●●●●●●Excel 活頁簿、工作表與儲存格
+'註解
+'分行用_
+
+'Range("位置").Value = 值
+'Range("自訂名稱儲存格").Value = 值
+'Cells(行,列).Value = 值
+Range(Cells(1, 1), Cells(4, 2)).Value = 13
+
+'選取整行
+Rows(3).Select
+
+'自動進行複製與貼上：
+Range("A1:A2").Select
+'使用Select物件的Copy方法
+Selection.Copy
+Range("C3").Select
+'呼叫ActiveSheet的Paste
+ActiveSheet.Paste
+
+'清除儲存格資料：
+'方法1，使用ClearContents
+Range("A1:A2").ClearContents
+'方法2，直接將儲存格內容指定為空字串
+Range("A1".Value = ""
+
+'使用Worksheets物件指定工作表進行操作：
+'方法1，使用工作表名稱
+Worksheets("工作表1").Range("A1").Value = "工作表1的A1"
+Worksheets("工作表2").Range("A1").Value = "工作表2的A1"
+'方法2，使用工作表順序
+Worksheets(1).Range("A1").Value = "工作表1的A1"
+Worksheets(2).Range("A1").Value = "工作表2的A1"
+
+'新增工作表
+Worksheets.Add
+'新增工作表預設放在第一個位置
+'使用Name屬性改變工作表名稱
+Worksheets(1).Name = "新的工作表"
+'計算目前工作表數量
+MsgBox Worksheets.Count
+
+'Workbooks物件代表Excel目前開啟的活頁簿
+Workbooks("活頁簿1").Worksheets(1).Range("A1").Value = "Hello"
+'查看目前活頁簿數量
+MsgBox Workbooks.Count
+'取得活頁簿名稱
+MsgBox Workbooks(1).Name
+
+'開啟活頁簿
+'Workbooks.Open "路徑"
+'儲存活頁簿
+'Workbooks("檔案名稱").Save
+'另存新檔活頁簿
+'Workbooks("檔案名稱").SaveAs "路徑"
+'指定當前活頁簿
+'Workbooks("檔案名稱").Activate
+'關閉活頁簿
+'Workbooks("檔案名稱").Close
+'關閉所有活頁簿，留下主視窗
+'Workbooks.Close
+'關閉整個Excel
+Application.Quit
+
+●●●●●●●●●變數的宣告、定義與操作
+'Dim 變數名稱 As 變數類型
+'萬用類型變數Variant：宣告時不指定變數類型，則預設為Variant，執行效能差；未經宣告的變數預設為Variant
+
+'程式碼開頭加上
+Option Explicit '強迫變數宣告，否則編譯出現錯誤訊息
+
+'公開變數
+'Public 變數名稱 As 變數類型
+
+'常數
+'Const 變數名稱 As 變數類型 
+
+●●●●●●●●●條件判斷式：If Then、Else 與 Select Case
+●●●●●●●●●迴圈控制：For Loop、For Each 與 Do Loop
