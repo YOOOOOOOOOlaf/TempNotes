@@ -1,0 +1,16 @@
+'複製文件中第三個表格中的第二列第二格
+ActiveDocument.Tables(3).Cell(2, 2).Range.Copy
+'選擇文件中第四個表格中的第二列第二格，貼上複製的內容
+ActiveDocument.Tables(4).Cell(2, 2).Select
+Selection.Paste
+
+'取得文件中第一個表格的列數
+ActiveDocument.Tables(1).Columns.Count
+
+ActiveDocument.Tables(7).Cell(2, 1).Select 'Table7送件案件編號
+Selection.MoveDown Unit:=wdLine, Count:=2, Extend:=wdExtent
+Selection.TypeText ("送鑑證物檢驗表-證物no")
+Selection.MoveDown Unit:=wdLine, Count:=1, Extend:=wdExtent
+ActiveDocument.Tables.Add Range:=Selection.Range, NumRows:=ActiveDocument.Tables(3).Columns.Count, NumColumns:=4
+
+'.Cells(1).Range.Text = "ok" 

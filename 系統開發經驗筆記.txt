@@ -1,0 +1,24 @@
+●●●使用者'sa'登入失敗。原因：帳戶已停用。
+Solution：
+登入屬性→狀態→登入：已啟用
+
+
+
+●●●SqlParameter
+(1)檢查參數的型別
+(2)檢查參數的長度
+(3)保證Injected Code在資料庫中會被當成純文字而不是可以執行的SQL命令
+
+SQL Injection發生的原因有三點： 
+(1)資料輸入沒有經過驗證，或很薄弱的驗證。 
+(2)以動態SQL Statement建構SQL命令，讓有心人可隨意傳入SQL命令破壞資料庫（這是非常多的程式設計師通病，請儘量不要使用可接受任意SQL命令方式來設計你的程式，只消一道Drop database命令就可能徹底毀滅掉資料庫）。 
+(3)使用過大權限的帳號來存取資料庫，而非適度的權限（如程式以sa來進行登入）
+
+●●●partial class
+cs檔分身術：partial class
+https://ithelp.ithome.com.tw/articles/10184806
+
+●●●
+System.InvalidOperationException 類型的例外狀況發生於 System.Data.dll 但使用者程式碼未加以處理
+ConnectionString屬性尚未初始化
+

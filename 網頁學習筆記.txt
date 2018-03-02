@@ -1,0 +1,29 @@
+
+
+初學者入門ASP .NET for using C# 取得SQL Server資料
+https://goo.gl/qa79i2
+查看SQL Server的 TCP/IP是否有開啟：
+	「開始」
+	→「所有程式」
+	→「Microsoft SQL Server 2008」
+	→「組態工具」
+	→「SQL Server 組態管理員」
+	→左方的「SQL Server網路組態」
+	→「SQLEXPRESS的通訊協定」
+	→將「TCP/IP」啟用
+	
+【資訊】 Win7-IIS與asp.net架站設定教學
+https://goo.gl/zO1xvT
+IIS預設無開啟，故須手動啟用：
+	控制台 
+	-> 程式集 
+	-> 程式和功能 
+	-> 開啟或關閉 Windows 功能
+	->啟用 Internet Information Services
+		V IIS管理主控台
+		V WWW服務
+IIS歡迎畫面，主機首頁：
+	瀏覽器網址輸入 http://127.0.0.1
+網頁存放目錄：
+	C:\Inetpub\wwwroot
+◎或可使用「虛擬目錄」，避免與OS放一起將較安全(按：WHY???)

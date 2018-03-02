@@ -1,0 +1,15 @@
+檔案系統的設計與效能
+https://ithelp.ithome.com.tw/users/20001007/ironman/197
+
+
+Little Endian
+反序排列
+
+0x12345678
+Little Endian: 78|56|34|12
+Big Endian:	   12|34|56|78
+
+以目前常見的CPU為例：
+INTEL X86、DEC VAX 使用 LITTLE-ENDIAN 設計；
+HP、IBM、MOTOROLA 68K 系列使用 BIG-ENDIAN 設計；
+POWERPC 同時支援兩種格式，稱為 BI-ENDIAN。

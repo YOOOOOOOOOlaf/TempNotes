@@ -1,0 +1,27 @@
+tzdata 
+
+/usr/share/zoneinfo/
+
+時區檔案主要放置於 /usr/share/zoneinfo/ 目錄下，而本地時區則參考 /etc/localtime
+
+/* vdi to vmdk */
+開啟cmd(命令提示字元)
+cd c:\program files\oracle\virtualbox\
+// 使用VirtualBox提供的工具進行轉檔
+VBoxManage.exe clonehd "C:\User\user\VirtualBox VMs\Ubuntu\Ubuntu.vdi" "D:\Ubuntu.vmdk" --format VMDK --variant Standard
+// 來源vdi檔勿複製，否則將出現「error: Cannot regist the hard disk '*.vdi' {*-*-*-*-*} because a hard disk '***.vdi' with UUID {*-*-*-*-*} already exists」
+
+/* vdi to vhd(Virtual PC檔案格式) */
+VBoxManage.exe clonehd "C:\User\user\VirtualBox VMs\Ubuntu\Ubuntu.vdi" "D:\Ubuntu.vhd" --format VHD
+// 勿加「--variant Standard」
+
+
+/etc/localtime 這個連結檔是系統用來紀錄時區設定的檔案，從這個檔案的內容也可以看出目前系統的時區設定
+CST 表示為 Asia/Taipei
+
+timezome
+// ~/etc/timezone
+
+localtime
+// ~/etc/localtime
+

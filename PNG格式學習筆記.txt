@@ -1,0 +1,80 @@
+●●●PNG檔案結構：
+PNG圖像格式檔案
+	由一個8位元組的PNG檔案標識（file signature）域
+	和3個以上的後續資料塊（IHDR、IDAT、IEND）組成。
+PNG檔案包括8位元組檔案署名（89 50 4E 47 0D 0A 1A 0A，十六進位），用來識別PNG格式。
+
+●●●
+PNG文件署名域：
+十进制数	137	80	78	71	13	10	26	10
+十六进制数	89	50	4e	47	0d	0a	1a	0a
+数据块的结构：
+名称							字节数		说明
+Length(长度)					4字节		指定数据块中数据域的长度，其长度不超过(2^31－1)字节
+Chunk Type Code(数据块类型码)	4字节		数据块类型码由ASCII字母(A-Z和a-z)组成
+Chunk Data(数据块数据)			可变长度	存储按照Chunk Type Code指定的数据
+CRC(循环冗余检测)				4字节		存储用来检测是否有错误的循环冗余码
+
+
+十六進位	含義
+89			用於檢測傳輸系統是否支援8位元的字元編碼（8 bit data），用以減少將文字檔案被錯誤的識別成PNG檔案的機會，反之亦然。
+50 4E 47	PNG每個字母對應的ASCII，讓用戶可以使用文字編輯器檢視時，識別出是PNG檔案。
+0D 0A		DOS風格的換行符（CRLF）。用於DOS-Unix資料的換行符轉換。
+1A			在DOS命令列下，用於阻止檔案顯示的檔案結束符。
+0A			Unix風格的換行符（LF）。用於Unix-DOS換行符的轉換。
+
+PNG定義了兩種類型的資料塊：
+	一種是PNG檔案必須包含、讀寫軟體也都必須要支援的關鍵塊（critical chunk）；
+	另一種叫做輔助塊（ancillary chunks）
+	
+關鍵資料塊中有4個標準資料塊：
+	檔案頭資料塊IHDR（header chunk）：包含有圖像基本資訊，作為第一個資料塊出現並只出現一次。
+	調色盤資料塊PLTE（palette chunk）：必須放在圖像資料塊之前。
+	圖像資料塊IDAT（image data chunk）：儲存實際圖像資料。PNG資料允許包含多個連續的圖像資料塊。
+	圖像結束資料IEND（image trailer chunk）：放在檔案尾部，表示PNG資料流結束。
+
+
+http://dev.gameres.com/Program/Visual/Other/PNGFormat.htm
+https://www.w3.org/TR/2003/REC-PNG-20031110/
+
+
+●●●●●●●●●
+Time stamp information
+tIME Image last-modification time
+The four-byte chunk type field contains the decimal values
+116 73 77 69
+
+Year	2 bytes (complete; for example, 1995, not 95)
+Month	1 byte (1-12)
+Day		1 byte (1-31)
+Hour	1 byte (0-23)
+Minute	1 byte (0-59)
+Second	1 byte (0-60) (to allow for leap seconds)
+
+Creation Time tEXt keyword, which can be used for a user-supplied time.
+
+●●●●●●●●●
+http://dev.exiv2.org/projects/exiv2/wiki/The_Metadata_in_PNG_files
+
+A PNG always starts with an 8-byte signature: 137 80 78 71 13 10 26 10 (decimal values).
+The remainder of the file consists a series of chunks beginning with an IHDR chunk and ending with an IEND chunk.
+
+1. Chunks
+Chunks declare themselves as critical or ancillary.
+Some standard critical chunks.
+Name	Multiple	Ordering constraints	Content
+IHDR	No			Must be the first		the image's width, height, and bit depth
+IEND	No			Must be the last		it just marks the image end. The chunk's data field is empty.
+Some standard ancillary chunks.
+Name	Multiple	Ordering constraints	Content
+tIME 	No			None 					the time that the image was last changed.
+iTXt	Yes			None					UTF-8 text, compressed or not, with an optional language tag.
+tEXt	Yes			None					text that can be represented in ISO/IEC 8859-1.
+zTXt	Yes			None					compressed text with the same limits as tEXt.
+
+2. Textual information chunks - the metadata in PNG
+Each of the text chunks contains as its first field a keyword that indicates the type of information represented by the text string.
+Keywords		Explain
+Creation Time	Time of original image creation
+
+
